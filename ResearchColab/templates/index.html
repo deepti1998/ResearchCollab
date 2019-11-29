@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="text-align--center">
+<h2>Search .. </h2>
+</div>
+
+<form action="{% url 'search_results' %}" method="get">
+  <input name="q" type="text" placeholder="Write And Enter">
+</form>
+
+{% endblock %}
