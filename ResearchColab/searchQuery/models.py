@@ -16,6 +16,7 @@ class SearchBar(models.Model):
         self.save()
 
 
+# uploaded into database
 class Book(models.Model):
     title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
@@ -29,3 +30,19 @@ class Book(models.Model):
         self.pdf.delete()
         self.cover.delete()
         super().delete(*args, **kwargs)
+
+
+# authors papers
+class DocumentDetails(models.Model):
+    id = models.CharField(primary_key=True, max_length=500)
+    abstract = models.TextField(blank=False, null=True)
+    authors = models.TextField(blank=False, null=True)
+    title = models.TextField(blank=False, null=True)
+    references = models.TextField(blank=False, null=True)
+    venue = models.TextField(blank=False, null=True)
+    n_citation = models.IntegerField()
+    year = models.IntegerField()
+
+
+
+
