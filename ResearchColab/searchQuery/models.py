@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 from django.db import models
+import json
 from .validators import validate_file_extension
 
 
@@ -43,6 +44,13 @@ class DocumentDetails(models.Model):
     n_citation = models.IntegerField()
     year = models.IntegerField()
 
+    def getAllPapersfromAuthors(authors):
+        papers = []
+        document_set = DocumentDetails.objects.all()
+        for i in document_set:
+            if len(set(json.loads(i.authors)).intersection(set(authors))) > 0:
+                papers.append(i)
+        return papers
 
 
 
